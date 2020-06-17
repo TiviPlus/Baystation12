@@ -8,7 +8,7 @@ PROCESSING_SUBSYSTEM_DEF(dcs)
 	comp_lookup = SSdcs.comp_lookup
 
 /datum/controller/subsystem/processing/dcs/proc/GetElement(list/arguments)
-	var/datum/element/eletype = arguments[1]
+	var/datum/element/eletype = arguments
 	var/element_id = eletype
 
 	if(!ispath(eletype, /datum/element))

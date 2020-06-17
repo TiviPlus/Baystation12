@@ -2,41 +2,43 @@
 	name = "scented candle"
 	desc = "A candle which releases pleasant-smelling oils into the air when burned."
 
-	var/scent //for the desc
-	var/decl/scent_type/style
-	var/list/scent_types = list(/decl/scent_type/rose,
-								/decl/scent_type/cinnamon,
-								/decl/scent_type/vanilla,
-								/decl/scent_type/seabreeze,
-								/decl/scent_type/lavender)
+	var/scent //for desc
+	///How strong the smell is
+	var/intensity = 2
+	///How far away you can smell it from
+	var/range = 4
+	var/descriptor = SCENT_DESC_FRAGRANCE
+	var/possible_scents = list("a rose garden",
+						"assorted citrus",
+						"frankincense",
+						"white sage",
+						"crisp mint",
+						"nag champa",
+						"gentle lavender",
+						"cinnamon",
+						"vanilla",
+						"a sea breeze",
+						"sandalwood"
+						)
 
 /obj/item/weapon/flame/candle/scented/Initialize()
 	. = ..()
-	get_scent()
+	var/scent = safepick(possible_scents)
+	desc += " This one smells of [scent]."
 
 /obj/item/weapon/flame/candle/scented/attack_self(mob/user as mob)
 	..()
-	if(!lit)
-		remove_extension(src, /datum/extension/scent)
+	RemoveElement(/datum/element/scent)
 
 /obj/item/weapon/flame/candle/scented/extinguish(var/mob/user, var/no_message)
 	..()
-	remove_extension(src, /datum/extension/scent)
+	RemoveElement(/datum/element/scent)
 
 /obj/item/weapon/flame/candle/scented/light(mob/user)
 	..()
 	if(lit)
-		set_extension(src, style.scent_datum)
-
-/obj/item/weapon/flame/candle/scented/proc/get_scent()
-	var/scent_type = safepick(scent_types)
-	if(scent_type)
-		style = decls_repository.get_decl(scent_type)
-		color = style.color
-		scent = style.scent
-	if(scent)
-		desc += " This one smells of [scent]."
-	update_icon()
+		AddElement(/datum/element/scent, scent, intensity, descriptor, range)
+		update_icon()
 
 /obj/item/weapon/storage/candle_box/scented
 	name = "scented candle box"

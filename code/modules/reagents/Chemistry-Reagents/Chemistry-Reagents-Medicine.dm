@@ -795,7 +795,7 @@
 	taste_description = "acrid smoke"
 	value = 0
 	scent = "acrid tobacco smoke"
-	scent_intensity = /decl/scent_intensity/strong
+	scent_intensity = 3
 	scent_descriptor = SCENT_DESC_ODOR
 
 /datum/reagent/tobacco/liquid

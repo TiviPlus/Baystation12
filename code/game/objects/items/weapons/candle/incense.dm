@@ -10,14 +10,17 @@
 	candle_outer_range = 1
 	candle_falloff = 2
 
-	scent_types = list(/decl/scent_type/rose,
-					   /decl/scent_type/citrus,
-					   /decl/scent_type/sage,
-					   /decl/scent_type/frankincense,
-					   /decl/scent_type/mint,
-					   /decl/scent_type/champa,
-					   /decl/scent_type/lavender,
-					   /decl/scent_type/sandalwood)
+	intensity = 3
+	range = 5
+	possible_scents = list("a rose garden",
+						"assorted citrus",
+						"frankincense",
+						"white sage",
+						"crisp mint",
+						"nag champa",
+						"gentle lavender",
+						"sandalwood"
+						)
 
 /obj/item/weapon/storage/candle_box/incense
 	name = "incense box"

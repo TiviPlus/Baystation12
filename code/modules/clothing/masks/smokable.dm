@@ -200,7 +200,7 @@
 
 /obj/item/clothing/mask/smokable/extinguish(var/mob/user, var/no_message)
 	..()
-	remove_extension(src, /datum/extension/scent)
+	RemoveElement(/datum/element/scent)
 	if (type_butt)
 		var/obj/item/butt = new type_butt(get_turf(src))
 		transfer_fingerprints_to(butt)
@@ -491,7 +491,7 @@
 		var/mob/living/M = loc
 		if (!no_message)
 			to_chat(M, "<span class='notice'>Your [name] goes out, and you empty the ash.</span>")
-	remove_extension(src, /datum/extension/scent)
+	RemoveElement(/datum/element/scent)
 
 /obj/item/clothing/mask/smokable/pipe/attack_self(var/mob/user)
 	if(lit == 1)
@@ -499,7 +499,7 @@
 		lit = 0
 		update_icon()
 		STOP_PROCESSING(SSobj, src)
-		remove_extension(src, /datum/extension/scent)
+		RemoveElement(/datum/element/scent)
 	else if (smoketime)
 		var/turf/location = get_turf(user)
 		user.visible_message("<span class='notice'>[user] empties out [src].</span>", "<span class='notice'>You empty out [src].</span>")

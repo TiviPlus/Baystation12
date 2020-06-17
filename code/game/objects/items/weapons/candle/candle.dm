@@ -70,11 +70,11 @@
 		T.hotspot_expose(700, 5)
 
 /obj/item/weapon/flame/candle/attack_self(mob/user as mob)
-	if(lit)
-		lit = 0
-		update_icon()
-		set_light(0)
-		remove_extension(src, /datum/extension/scent)
+	if(!lit)
+		return
+	lit = 0
+	update_icon()
+	set_light(0)
 
 /obj/item/weapon/storage/candle_box
 	name = "candle pack"

@@ -62,12 +62,10 @@
 
 
 /datum/component/squeak/proc/play_squeak_crossed(atom/movable/AM)
-	if(isitem(AM))
-		var/obj/item/I = AM
-		if(istype(AM, /obj/item/projectile))
-			var/obj/item/projectile/P = AM
-			if(P.original != parent)
-				return
+	if(istype(AM, /obj/item/projectile))
+		var/obj/item/projectile/P = AM
+		if(P.original != parent)
+			return
 
 	var/atom/current_parent = parent
 	if(isturf(current_parent.loc))
